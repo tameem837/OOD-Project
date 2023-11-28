@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fregments :: head"></head>
+<body class="bg-danger bg-gradient" style="--bs-bg-opacity: .15;">
+
+<div th:replace="fregments :: navbar"></div>
+
+<div th:if="${error}" th:replace="fregments :: alert-error"></div>
+<div th:if="${success}" th:replace="fregments :: alert-success"></div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-7 mx-auto">
+      <form th:action="@{/purpleSense/edit/save}" th:object="${purpleSenseEdit}" method="post">
+          <input type="text" class="form-control" hidden="hidden" id="id" th:field="*{id}" name="id" required>
+          <div class="form-group mb-4">
+            <label for="purpleSenseName">Name</label>
+            <input type="text" class="form-control" id="purpleSenseName" th:field="*{name}" name="purpleSenseName" required>
+          </div>
+          <div class="form-group mb-4">
+            <label for="purpleSensePrice">Price</label>
+            <input type="number" class="form-control" id="purpleSensePrice" th:field="*{price}" name="purpleSensePrice" required>
+          </div>
+          <div class="form-group mb-4">
+            <label for="purpleSenseCategory">Category Name</label>
+            <input type="text" class="form-control" id="purpleSenseCategory" th:field="*{category}" name="purpleSenseCategory" required>
+          </div>
+          <div class="form-group mb-4">
+            <label for="purpleSenseImage">Image Url</label>
+            <input type="url" class="form-control" id="purpleSenseImage" th:field="*{image}" name="purpleSenseImage" required>
+          </div>
+          <div class="form-group mb-4">
+            <label for="purpleSenseImage">Description</label>
+            <textarea  class="form-control" rows="6" id="purpleSenseDescription" th:field="*{description}" name="purpleSenseDescription"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success">Save Product</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div th:replace="fregments :: create-purpleSense"></div>
+<div th:replace="fregments :: script"></div>
+</body>
+</html>
